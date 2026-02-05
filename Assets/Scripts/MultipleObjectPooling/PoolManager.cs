@@ -5,7 +5,11 @@ using UnityEngine;
 public  enum PoolObjectType 
 {
     Cube, 
-    Cylinder
+    Cylinder,
+    Capsule,
+    Cross,
+    Sphere,
+    Squidward
 }
 
 [Serializable]

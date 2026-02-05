@@ -558,6 +558,26 @@ MonoBehaviour:
     prefab: {fileID: 1646250401132404977, guid: 1a6d931810575b94f9838592607db8c7, type: 3}
     container: {fileID: 1753254915}
     pool: []
+  - type: 4
+    amount: 5
+    prefab: {fileID: 8886556432975292972, guid: 5a234c8fb7c4d354c8720804dbd80f23, type: 3}
+    container: {fileID: 1753254915}
+    pool: []
+  - type: 2
+    amount: 5
+    prefab: {fileID: 4382903309684604229, guid: 51baa0628c388424982503c2afc7bb85, type: 3}
+    container: {fileID: 1753254915}
+    pool: []
+  - type: 3
+    amount: 5
+    prefab: {fileID: 665077478279365599, guid: f165e6485e660ce42bc7991ea6b5c70f, type: 3}
+    container: {fileID: 1753254915}
+    pool: []
+  - type: 5
+    amount: 5
+    prefab: {fileID: 5262860313370141987, guid: 8ed3cb103cfe1ba4983a5fdf6cd46554, type: 3}
+    container: {fileID: 1753254915}
+    pool: []
   defaultPos: {x: 0, y: 8.2, z: 0}
 --- !u!4 &2052026051
 Transform:

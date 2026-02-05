@@ -5,29 +5,61 @@ using UnityEngine;
 
 public class SpawnDeterminer : MonoBehaviour
 {
-    [SerializeField] private float spawnInterval = 2f;
+    [Header("Spawn Settings")]
+    [SerializeField] private float minSpawnTime = 1f; // Minimum possible delay
+    [SerializeField] private float maxSpawnTime = 5f; // Maximum possible delay
+    
+    private PoolObjectType type;
 
     void Start()
     {
-        // Start the infinite spawning loop once at the beginning
         StartCoroutine(SpawnLoop());
     }
 
     private IEnumerator SpawnLoop()
     {
-        while (true) // Infinite loop for the game duration
+        while (true) 
         {
-            // Pick a random type
-            int random = UnityEngine.Random.Range(0, 2);
-            PoolObjectType type = (random == 0) ? PoolObjectType.Cube : PoolObjectType.Cylinder;
-
-            // Spawn the object
+            int random = UnityEngine.Random.Range(0, 6);
+            SelectType(random);
             SpawnObject(type);
 
-            // Wait for a random interval (as you requested for your Flappy Bird game)
-            float waitTime = UnityEngine.Random.Range(spawnInterval * 0.5f, spawnInterval * 1.5f);
+            // 1. Generate a NEW random interval for THIS cycle
+            float waitTime = UnityEngine.Random.Range(minSpawnTime, maxSpawnTime);
+            
+            // 2. Wait for that specific random amount of time
             yield return new WaitForSeconds(waitTime);
         }
+    }
+
+
+    private void SelectType(int random)
+    {
+        if(random ==0)
+        {
+            type = PoolObjectType.Cube ;
+        }
+        else if(random ==1)
+        {
+            type = PoolObjectType.Cylinder ;
+        }
+        else if(random ==2)
+        {
+            type = PoolObjectType.Capsule ;
+        }
+        else if(random ==3)
+        {
+            type = PoolObjectType.Sphere ;
+        }
+        else if(random ==4)
+        {
+            type = PoolObjectType.Squidward ;
+        }
+        else if(random ==5)
+        {
+            type = PoolObjectType.Cross ;
+        }
+
     }
 
     private void SpawnObject(PoolObjectType type)
@@ -36,10 +68,10 @@ public class SpawnDeterminer : MonoBehaviour
         
         if (ob != null)
         {
-            // Random Y position for Flappy Bird style obstacles
-            //float randomY = UnityEngine.Random.Range(-3f, 3f); 
-            ob.transform.position = new Vector3(0f, 8.2f, 0f); 
+            float randomZ= UnityEngine.Random.Range(-3f, 3f); 
+            ob.transform.position = new Vector3(0f, 8.2f, randomZ); 
             ob.SetActive(true);
         }
     }
+
 }
